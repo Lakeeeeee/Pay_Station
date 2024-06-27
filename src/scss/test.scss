@@ -1,0 +1,48 @@
+$main-color: #f9a366;
+$nav-color: #f4d19d;
+$btn-color: #ffc393;
+$bg-color: #ffe9d9;
+$strong-color: #d98038;
+$text-color: #696969;
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: $bg-color;
+    color: $text-color;
+}
+
+#nav-bar {
+    background-color: $nav-color;
+    padding: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    img {
+        height: 2em;
+        width: auto;
+    }
+    #deco-block {
+        background-color: $bg-color;
+        height: 2em;
+        width: 100%;
+        border-radius: 0 10em 0 0;
+    }
+}
+
+.tool-btn {
+    background-color: white;
+    color: $main-color;
+    border-radius: 2em;
+}
+
+.numberPad {
+    tbody {
+        tr {
+            td {
+                border-radius: 5px;
+                background-color: $main-color;
+                color: white;
+                margin: 3px;
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+<form action="/invoice" method="post" id="frm0">
+    <div class="row p-3">
+        <input type="hidden" value="{{{order.id}}}" name="orderId">
+        <div class="col-6 d-flex flex-column align-items-center">
+            <p class="fs-2 fw-bold">
+                請選擇電子發票開立型式
+            </p>
+            <img class="w-10em mt-3" src="/images/receipt.png">
+        </div>
+        <div
+            class="col-6 d-grid gap-3 align-items-center justify-content-center align-content-center">
+            {{#each receipts}}
+                <button class="payment-btn" name="paymentId" value="{{id}}">
+                    <img src="{{ ico }}" alt="{{ text }}">
+                    {{ text }}
+                </button>
+            {{/each}}
+        </div>
+    </div>
+</form>

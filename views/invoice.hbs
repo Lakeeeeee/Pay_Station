@@ -1,0 +1,79 @@
+<div id="app">
+    <div class="row p-3">
+        <input type="hidden" value="{{{order.id}}}" name="orderId">
+        <div class="col-6 d-flex flex-column align-items-center">
+            <p class="fs-2 fw-bold">
+                請{{receipt.text}}
+            </p>
+            <input v-model="receiptNumber" class="form-control w-10em text-center fs-4">
+            <img class="position-absolute t-16em w-10em" src="{{receipt.icon}}">
+        </div>
+        <div class="col-6 d-grid gap-3 align-items-center justify-content-center align-content-center">
+            {{#if receipt.src}}
+                <img class="h-18em" src="{{receipt.src}}">
+            {{else}}
+                <div class="col-auto">
+                    <table class="numberPad">
+                        <tbody>
+                            <tr v-for="tr in numberPad">
+                                <td :class="{'back-tag': num === 'X'}" v-for="num in tr" @click="clickNumTd(num)">
+                                    ${num}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+        <button class="footer-block footer-btn-r pe-4" type="button" @click="postReceiptNumber">
+            確認送出
+            <img src="/images/arrow-r.png" class="w-1em">
+        </button>
+    </div>
+</div>
+<script>
+    Vue.createApp({
+        delimiters: ["${", "}"],
+        data() {
+            return {
+                receiptNumber: '',
+                numberPad: [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['清除', 0, 'X']],
+            }
+        },
+        methods: {
+            clickNumTd(char) {
+                const charString = char.toString()
+
+                if (char == '清除') {
+                    this.receiptNumber = ''
+                } else if (char == 'X') {
+                    this.receiptNumber = this.receiptNumber.slice(0, this.receiptNumber.length - 1)
+                } else {
+                    this.receiptNumber += charString
+                }
+            },
+            postReceiptNumber() {
+                const reg = /^\d+$/
+
+                if (!reg.test(this.receiptNumber)) {
+                    alert('wrong')
+                    return
+                }
+
+                // todo: 加入post api method
+
+                //接續 if post res is true
+                let fakeResponse = true
+
+                if (fakeResponse) {
+                    //post 到三竹發簡訊(應該在route 或controller)
+                    location.href = "/final"
+                }
+
+            }
+        }
+    }).mount('#app')
+
+</script>

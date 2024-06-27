@@ -1,0 +1,74 @@
+<form action="/receipt" method="post" id="frm0">
+    <input type="hidden" value="{{postData.orderId}}">
+    <input type="hidden" value="{{postData.paymentId}}">
+</form>
+
+<input value="" id="scanValue">
+
+<div class="row p-3">
+    <input type="hidden" value="{{{order.id}}}" name="orderId">
+    <div class="border border-danger col-6 ">
+        <p class="fs-2 fw-bold">
+            【請留意刷卡機提示字樣 】
+        </p>
+        <p class="fs-2 fw-bold">
+            請使用<span class="fw-bold font-color">{{payment.text}}</span>
+            <br>
+            支付金額 <span class="fw-bold font-color">{{order.amount}} </span>元
+        </p>
+        <p class="fs-2 fw-bold">
+            《 請靠卡感應支付 》
+        </p>
+
+    </div>
+    <div class="border border-danger col-6 d-flex justify-content-center align-items-center">
+        <img class="plate-img" src="{{payment.src}}" />
+    </div>
+</div>
+
+<div class="d-flex align-items-center justify-content-between mt-4">
+    <button class="footer-block footer-btn-l gap-2 ps-4" type="button" id="goBack">
+        <span class="fw-bold fs-3">X</span>
+        <span>回上一頁</span>
+    </button>
+</div>
+
+<script>
+    const backBtn = document.getElementById('goBack')
+    backBtn.addEventListener('click', (e) => {
+        history.back()
+    })
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            failAlert('操作逾時')
+        }, 30000)
+    })
+
+    const sensor = document.getElementById('scanValue')
+    sensor.addEventListener('change', (e) => {
+
+        //todo: regex it if it's needed
+
+        //todo: post to pay api
+
+        let fakeResponse = true
+        let fakeIsSuccess = true
+
+        if (fakeResponse && fakeIsSuccess) {
+            alert('繳費成功')
+            //todo: post to database to change order's pay status
+            
+            const orderId = {{postData.orderId}}
+            let fakeDataBaseRes = true
+            if (fakeDataBaseRes) {
+                    const frm0 = document.getElementById('frm0')
+                    frm0.submit()
+            }
+
+        } else {
+            failAlert('付款失敗')
+        }
+    })
+
+</script>

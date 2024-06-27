@@ -1,0 +1,129 @@
+<div id="app">
+    <div v-if="isTypeCarNumPadShow" id="typeCarNumPad">
+        <div class="d-flex justify-content-center align-items-center row">
+            <div class="col-auto car-plate">
+                <image class="plate-img" src="/images/carPlate.png"></image>
+                <input v-model="plate" class="plate-input" placeholder="輸入車牌號碼" maxlength="4">
+            </div>
+            <div class="col-auto">
+                <table class="numberPad">
+                    <tbody>
+                        <tr v-for="tr in numberPad">
+                            <td :class="{'back-tag': num === 'X'}" v-for="num in tr" @click="clickNumTd(num)">
+                                ${num}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <a href="/">
+                <button class="footer-block footer-btn-l gap-2 ps-4">
+                    <img src="/images/arrow-l.png" class="w-1em">
+                    <span>回主畫面</span>
+                </button>
+            </a>
+
+            <button class="footer-block footer-btn-r gap-2 pe-4" type="button" @click="postPlate">
+                查詢車牌
+                <img src="/images/arrow-r.png" class="w-1em">
+            </button>
+
+        </div>
+    </div>
+    <div v-else="isTypeCarNumPad" id="selectCarPic">
+        <input name="toolId" value="{{{toolId}}}" type="hidden">
+        <div class="border border-danger car-pics-list">
+            <img class="car-pic" v-for="(car, index) in carInfo" :src="car.src"
+                :class="{ selectedPic : selectedIndex === index }" @click="clickPic(index)" />
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-4">
+            <button class="footer-block footer-btn-l gap-2 ps-4" type="button" @click="clickReSearch">
+                <img src="/images/arrow-l.png" class="w-1em">
+                <span>重新查詢</span>
+            </button>
+
+            <button class="footer-block footer-btn-r gap-2 pe-4" type="button" @click="goToPay">
+                前往繳費
+                <img src="/images/arrow-r.png" class="w-1em">
+            </button>
+
+        </div>
+    </div>
+</div>
+<script>
+    var toolIdValue = "{{{toolId}}}"
+    Vue.createApp({
+        delimiters: ["${", "}"],
+        data() {
+            return {
+                plate: '',
+                numberPad: [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['清除', 0, 'X']],
+                carInfo: [],
+                isTypeCarNumPadShow: false,
+                selectedIndex: 0
+            }
+        },
+        methods: {
+            clickNumTd(char) {
+                const charString = char.toString()
+
+                if (char == '清除') {
+                    this.plate = ''
+                } else if (char == 'X') {
+                    this.plate = this.plate.slice(0, this.plate.length - 1)
+                } else if (this.plate.length == 4) {
+                    return
+                } else {
+                    this.plate += charString
+                }
+            },
+            postPlate() {
+                const reg = /^\d+$/
+
+                if (!reg.test(this.plate)) {
+                    alert('wrong')
+                    return
+                }
+
+                // todo: 加入post api method
+
+                //接續 if post res is true, and get orderId and carPics
+                this.isTypeCarNumPadShow = false
+
+            },
+            clickReSearch() {
+                this.isTypeCarNumPadShow = true
+            },
+            clickPic(index) {
+                this.selectedIndex = index
+            },
+            goToPay() {
+                const selectedCar = this.carInfo[this.selectedIndex]
+                location.href = `/pay/${selectedCar.orderId}`
+            }
+        },
+        mounted() {
+            const carOne = {
+                orderId: 13,
+                src: '/images/exCarOne.png'
+            }
+
+            const carTwo = {
+                orderId: 48,
+                src: '/images/exCarTwo.png'
+            }
+
+            const carThr = {
+                orderId: 99,
+                src: '/images/exCarThr.png'
+            }
+
+            this.carInfo = [carOne, carTwo, carThr]
+        }
+
+    }).mount('#app')
+</script>

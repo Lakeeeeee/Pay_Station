@@ -1,0 +1,263 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffe9d9;
+    color: dimgray;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: inherit;
+}
+
+#nav-bar {
+    background-color: #f4d19d;
+    padding: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#nav-bar img {
+    height: 2em;
+    width: auto;
+}
+
+#nav-bar #deco-block {
+    background-color: #ffe9d9;
+    height: 2em;
+    width: 100%;
+    border-radius: 0 10em 0 0;
+}
+
+.tool-btn {
+    background-color: white;
+    border: 0;
+    color: #f9a366;
+    border-radius: 0.3em;
+    padding: 0.5em;
+    box-shadow: 1px 4px 2px rgba(0, 0, 0, 0.2);
+    width: 12em;
+}
+
+.tool-btn img {
+    height: 3em;
+}
+
+.w-1em {
+    width: 1em;
+}
+
+.w-1-5em {
+    width: 1.5em;
+}
+
+.w-2em {
+    width: 2em;
+}
+
+.w-5em {
+    width: 5em;
+}
+
+.w-10em {
+    width: 10em;
+}
+
+.h-18em {
+    height: 18em;
+}
+
+.h-22em {
+    height: 22em;
+    max-height: 22em;
+}
+
+.final-page {
+    background-image: url("/images/parking.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
+.t-16em {
+    top: 16em;
+}
+
+.font-color {
+    color: #f9a366;
+}
+
+.footer-block {
+    padding: 0.8em;
+    background-color: #ffc393;
+    padding-left: 3em;
+    padding-right: 3em;
+    border: 0;
+    color: dimgray;
+    font-weight: bold;
+    min-height: 4em;
+    min-width: 35dvh;
+    display: flex;
+    align-items: center;
+}
+
+.footer-message-r {
+    border-radius: 12em 0 0 0;
+    justify-content: end;
+}
+
+.footer-btn-l {
+    border-radius: 0 0.5em 0 0;
+    justify-content: start;
+    box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.footer-btn-r {
+    border-radius: 0.5em 0 0 0;
+    justify-content: end;
+    box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.numberPad tbody tr td {
+    border-radius: 5px;
+    background-color: #f9a366;
+    color: white;
+    margin: 3px;
+}
+
+.numberPad {
+    border-collapse: separate;
+    border-spacing: 0.5em;
+    background-color: #f4d19d;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 3px;
+}
+
+.numberPad tbody tr td {
+    border-radius: 5px;
+    background-color: #f9a366;
+    color: white;
+    padding: 0.4em 0.5em 0.4em 0.5em;
+    min-width: 100px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 1px #979797;
+    font-size: larger;
+    border: transparent solid 1px;
+    transition: 0.2s all;
+}
+
+.numberPad tbody tr td:active {
+    background-color: #d98038;
+    box-shadow: inset 2px 2px 5px rgba(68, 36, 0, 0.3);
+    border-bottom: #ffe9d9 solid 1px;
+    border-right: #ffe9d9 solid 1px;
+    border-radius: 5px;
+    transition-duration: 2ms;
+}
+
+.car-plate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plate-img {
+    height: 215px;
+}
+
+.plate-input {
+    position: absolute;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    color: #f9a366;
+    border: none;
+    background-color: transparent;
+}
+
+.plate-input::placeholder {
+    font-size: 40px;
+    text-align: center;
+    color: #f9a366;
+}
+
+.plate-input:focus {
+    outline: none;
+}
+
+.back-tag {
+    color: transparent !important;
+    padding-right: 25px !important;
+}
+
+.back-tag::before {
+    content: "";
+    background-image: url("/images/backArrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 20px;
+    position: absolute;
+    font-size: 10px;
+}
+
+.car-pics-list {
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.car-pic {
+    height: 215px;
+}
+
+.selectedPic {
+    border: #f9a366 3px solid;
+    border-radius: 5px;
+}
+
+.payment-btn {
+    border: none;
+    border-radius: 6px;
+    background-color: #f9a366;
+    box-shadow: 2px 2px 1px #979797;
+    color: white;
+    font-size: x-large;
+    padding: 0.5em 0.5em 0.5em 1em;
+    text-align: start;
+    min-width: 18em;
+    min-height: 4em;
+    font-weight: bold;
+}
+
+.payment-btn img {
+    max-height: 2em;
+    max-width: 2em;
+    margin-right: 0.8em;
+}
+
+.overlay {
+    z-index: 100;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.cus-message {
+    z-index: 200;
+    display: flex;
+    position: relative;
+    top: -45%;
+    width: 100%;
+    background-color: #ffe9d9;
+}
