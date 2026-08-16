@@ -25,7 +25,6 @@ app.set("views", "./views")
 
 // 解析 application/x-www-form-urlencoded 类型的请求体
 app.use(express.urlencoded({ extended: false }))
-
 // 解析 application/json 类型的请求体
 app.use(express.json())
 

@@ -7,7 +7,7 @@
 
 <div class="row p-3">
     <input type="hidden" value="{{{order.id}}}" name="orderId">
-    <div class="border border-danger col-6 ">
+    <div class="payment-panel col-6">
         <p class="fs-2 fw-bold">
             【請留意刷卡機提示字樣 】
         </p>
@@ -21,8 +21,8 @@
         </p>
 
     </div>
-    <div class="border border-danger col-6 d-flex justify-content-center align-items-center">
-        <img class="plate-img" src="{{payment.src}}" />
+    <div class="payment-panel col-6 d-flex justify-content-center align-items-center">
+        <img class="payment-method-img" src="{{payment.src}}" alt="{{payment.text}}" />
     </div>
 </div>
 

@@ -1,21 +1,21 @@
 <form action="/payment" method="post" id="frm0">
     <div class="row p-3">
-            <input type="hidden" value="{{{order.id}}}" name="orderId">
-            <div class="border border-danger col-6 d-flex align-items-center">
-                <p class="fs-2 fw-bold">
-                    車牌號碼：<span class="fw-bold font-color">{{order.plate}}</span>
-                    <br>
-                    支付金額：<span class="fw-bold font-color">{{order.amount}} </span>元
-                </p>
-            </div>
-            <div class="border border-danger col-6 d-grid gap-3 align-items-center justify-content-center align-content-center">
-                {{#each payments}}
-                    <button class="payment-btn" name="paymentId" value="{{id}}">
-                        <img src="{{ ico }}" alt="{{ text }}">
-                        {{ text }}
-                    </button>
-                {{/each}}
-            </div>
+        <input type="hidden" value="{{{order.id}}}" name="orderId">
+        <div class="payment-panel col-6 d-flex align-items-center">
+            <p class="fs-2 fw-bold">
+                車牌號碼：<span class="fw-bold font-color">{{order.plate}}</span>
+                <br>
+                支付金額：<span class="fw-bold font-color">{{order.amount}} </span>元
+            </p>
+        </div>
+        <div class="payment-panel col-6 d-grid gap-3 align-items-center justify-content-center align-content-center">
+            {{#each payments}}
+                <button class="payment-btn" name="paymentId" value="{{id}}">
+                    <img src="{{ ico }}" alt="{{ text }}">
+                    {{ text }}
+                </button>
+            {{/each}}
+        </div>
     </div>
 </form>
 <div class="d-flex align-items-center justify-content-between mt-4">
