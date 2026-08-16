@@ -3,7 +3,7 @@ var router = express.Router()
 
 router.get("/", function (req, res, next) {
     res.render("index", {
-        title: "Parkey KIOSK"
+        title: "PersonalWork"
     })
 })
 
@@ -37,7 +37,7 @@ router.post("/payment", function (req, res, next) {
     //從database 再取一次order obj, 並將order 狀態鎖定, 不再繼續跳錢
 
     res.render("payment", {
-        title: "Parkey KIOSK",
+        title: "PersonalWork",
         postData,
         payment: { id: 0, text: "晶片信用卡, 手機NFC", src: "/images/creditCard2.png" },
         order: { id: 99, plate: "MZD-7561", amount: 60 }
@@ -49,7 +49,7 @@ router.post("/receipt", function (req, res, next) {
 
     //find order details in database
     res.render("receipt", {
-        title: "Parkey KIOSK",
+        title: "PersonalWork",
         order: { id: 99, plate: "MZD-7561", amount: 60 },
 
         receipts: [
@@ -80,7 +80,7 @@ router.post("/invoice", function (req, res, next) {
     //從database 再取一次order obj, 並將order 狀態鎖定, 不再繼續跳錢
 
     res.render("invoice", {
-        title: "Parkey KIOSK",
+        title: "PersonalWork",
         postData,
         receipt,
         order: { id: 99, plate: "MZD-7561", amount: 60 }
@@ -89,7 +89,7 @@ router.post("/invoice", function (req, res, next) {
 
 router.get("/final", function (req, res, next) {
     res.render("final", {
-        title: "Parkey KIOSK"
+        title: "PersonalWork"
     })
 })
 

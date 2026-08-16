@@ -36,6 +36,16 @@ button {
         width: auto;
     }
 
+    .brand-logo {
+        border: 2px solid white;
+        border-radius: 4px;
+        color: white;
+        font-size: 1.1em;
+        font-weight: bold;
+        line-height: 1;
+        padding: 0.35em 0.5em;
+    }
+
     #deco-block {
         background-color: $bg-color;
         height: 2em;
